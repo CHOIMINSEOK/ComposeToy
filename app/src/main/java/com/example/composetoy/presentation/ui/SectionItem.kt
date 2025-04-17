@@ -17,7 +17,9 @@ fun SectionItem(section: Section) {
             HeaderItem(section.header)
         }
         when(section.contents.type) {
-            ContentType.BANNER -> Unit
+            ContentType.BANNER -> {
+                BannerItem(section.contents.banners)
+            }
             ContentType.GRID -> Unit
             ContentType.SCROLL -> {
                 HorizontalScrollContentItem(section.contents.goods)
