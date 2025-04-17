@@ -22,7 +22,7 @@ fun SectionItem(section: Section) {
             ContentType.BANNER -> BannerItem(section.contents.banners)
             ContentType.GRID -> GridItem(section.contents.goods)
             ContentType.SCROLL -> HorizontalScrollContentItem(section.contents.goods)
-            ContentType.STYLE -> Unit
+            ContentType.STYLE -> StyleItem(section.contents.styles)
         }
 
         Spacer(modifier = Modifier.size(20.dp))
