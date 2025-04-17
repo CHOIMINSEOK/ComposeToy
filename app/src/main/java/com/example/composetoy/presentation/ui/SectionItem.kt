@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -61,7 +62,8 @@ private fun <T> InnerSectionItem(
     content: @Composable (displayItems: List<T>) -> Unit,
     footer: Footer?
 ) {
-    var displayItems by remember {
+    // 스크롤로 인해 해당 Composable이 화면을 벗어났다가 복귀하더라도 상태가 보존되도록 한다.
+    var displayItems by rememberSaveable {
         mutableStateOf(initialItems)
     }
 
