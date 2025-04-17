@@ -12,7 +12,7 @@ import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
 data class MainUiState(
-    val rawString: String,
+    val sectionList: List<Section>
 )
 
 sealed class MainSideEffect
@@ -22,7 +22,7 @@ class MainViewModel @Inject constructor(
     private val repository: ContentListRepository
 ): ViewModel(), ContainerHost<MainUiState, MainSideEffect> {
 
-    override val container = container<MainUiState, MainSideEffect>(MainUiState(""))
+    override val container = container<MainUiState, MainSideEffect>(MainUiState(listOf()))
 
     init {
         viewModelScope.launch {
@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
 
     private fun initializeUI(sectionList: List<Section>) = intent {
         reduce {
-            state.copy(rawString = sectionList.toString())
+            state.copy(sectionList = sectionList)
         }
     }
 }
