@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.composetoy.domain.model.ContentType
 import com.example.composetoy.domain.model.Section
 
 @Composable
@@ -15,6 +16,15 @@ fun SectionItem(section: Section) {
         if (section.header != null) {
             HeaderItem(section.header)
         }
+        when(section.contents.type) {
+            ContentType.BANNER -> Unit
+            ContentType.GRID -> Unit
+            ContentType.SCROLL -> {
+                HorizontalScrollContentItem(section.contents.goods)
+            }
+            ContentType.STYLE -> Unit
+        }
+
         Text(text = section.toString())
     }
 
