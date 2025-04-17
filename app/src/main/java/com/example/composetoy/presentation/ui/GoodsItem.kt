@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -25,10 +26,10 @@ import com.example.composetoy.utils.formatCurrency
 
 @Composable
 fun GoodsItem(modifier: Modifier, goods: Goods) {
-    Column(modifier = modifier ) {
+    Column(modifier = modifier) {
         Box(modifier = Modifier.fillMaxWidth()) {
             AsyncImage(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(120.dp),
                 model = goods.thumbnailURL,
                 contentDescription = "goods thumbnail",
                 contentScale = ContentScale.Crop,
